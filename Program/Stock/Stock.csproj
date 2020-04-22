@@ -1,0 +1,412 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8A4F3A9A-5A4D-451C-BA22-1D73FA0BB5D5}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Stock</RootNamespace>
+    <AssemblyName>Stock</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="addCusForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="addCusForm.Designer.cs">
+      <DependentUpon>addCusForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="addMrkForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="addMrkForm.Designer.cs">
+      <DependentUpon>addMrkForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="addPrdForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="addPrdForm.Designer.cs">
+      <DependentUpon>addPrdForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="addSplForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="addSplForm.Designer.cs">
+      <DependentUpon>addSplForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="browseMerek.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="browseMerek.Designer.cs">
+      <DependentUpon>browseMerek.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddConnection.cs" />
+    <Compile Include="Customer.cs" />
+    <Compile Include="EditCusForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditCusForm.Designer.cs">
+      <DependentUpon>EditCusForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditCusListview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditCusListview.Designer.cs">
+      <DependentUpon>EditCusListview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditCustomer.Designer.cs">
+      <DependentUpon>EditCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditMerek.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditMerek.Designer.cs">
+      <DependentUpon>EditMerek.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditMrkForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditMrkForm.Designer.cs">
+      <DependentUpon>EditMrkForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditPrdForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditPrdForm.Designer.cs">
+      <DependentUpon>EditPrdForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditProduk.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditProduk.Designer.cs">
+      <DependentUpon>EditProduk.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditSplForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditSplForm.Designer.cs">
+      <DependentUpon>EditSplForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ERD Diagram.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ERD Diagram.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ERD Diagram.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ERD Diagram.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ERD Diagram.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ERD Diagram.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Form4.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form4.Designer.cs">
+      <DependentUpon>Form4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditSupplier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditSupplier.Designer.cs">
+      <DependentUpon>EditSupplier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditSplListview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditSplListview.Designer.cs">
+      <DependentUpon>EditSplListview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Merek.cs" />
+    <Compile Include="ShowStock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowStock.Designer.cs">
+      <DependentUpon>ShowStock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShowTransaction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowTransaction.Designer.cs">
+      <DependentUpon>ShowTransaction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StockKeluar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StockKeluar.Designer.cs">
+      <DependentUpon>StockKeluar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Menu2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menu2.Designer.cs">
+      <DependentUpon>Menu2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Supplier.cs" />
+    <Compile Include="Produk.cs" />
+    <Compile Include="Menu1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menu1.Designer.cs">
+      <DependentUpon>Menu1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StockMasuk.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StockMasuk.Designer.cs">
+      <DependentUpon>StockMasuk.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form3.Designer.cs">
+      <DependentUpon>Form3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="tableCustomer.cs">
+      <DependentUpon>ERD Diagram.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tableJabatan.cs">
+      <DependentUpon>ERD Diagram.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tableKaryawan.cs">
+      <DependentUpon>ERD Diagram.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tableMerek.cs">
+      <DependentUpon>ERD Diagram.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tableProduk.cs">
+      <DependentUpon>ERD Diagram.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tableStock.cs">
+      <DependentUpon>ERD Diagram.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tableStockKeluar.cs">
+      <DependentUpon>ERD Diagram.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tableStockMasuk.cs">
+      <DependentUpon>ERD Diagram.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tableSupplier.cs">
+      <DependentUpon>ERD Diagram.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Transaction.cs" />
+    <Compile Include="TransStockKeluar.cs" />
+    <Compile Include="TransStockMasuk.cs" />
+    <EmbeddedResource Include="addCusForm.resx">
+      <DependentUpon>addCusForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="addMrkForm.resx">
+      <DependentUpon>addMrkForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="addPrdForm.resx">
+      <DependentUpon>addPrdForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="addSplForm.resx">
+      <DependentUpon>addSplForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="browseMerek.resx">
+      <DependentUpon>browseMerek.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditCusForm.resx">
+      <DependentUpon>EditCusForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditCusListview.resx">
+      <DependentUpon>EditCusListview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditCustomer.resx">
+      <DependentUpon>EditCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditMerek.resx">
+      <DependentUpon>EditMerek.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditMrkForm.resx">
+      <DependentUpon>EditMrkForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditPrdForm.resx">
+      <DependentUpon>EditPrdForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditProduk.resx">
+      <DependentUpon>EditProduk.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditSplForm.resx">
+      <DependentUpon>EditSplForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditSupplier.resx">
+      <DependentUpon>EditSupplier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Menu1.resx">
+      <DependentUpon>Menu1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShowStock.resx">
+      <DependentUpon>ShowStock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShowTransaction.resx">
+      <DependentUpon>ShowTransaction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StockKeluar.resx">
+      <DependentUpon>StockKeluar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StockMasuk.resx">
+      <DependentUpon>StockMasuk.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form4.resx">
+      <DependentUpon>Form4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form3.resx">
+      <DependentUpon>Form3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditSplListview.resx">
+      <DependentUpon>EditSplListview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Menu2.resx">
+      <DependentUpon>Menu2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="ClassDiagram.cd" />
+    <EntityDeploy Include="ERD Diagram.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ERD Diagram.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="ERD Diagram.edmx.diagram">
+      <DependentUpon>ERD Diagram.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\161179_WAHYU ALLAH.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ERD Diagram.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ERD Diagram.Context.cs</LastGenOutput>
+      <DependentUpon>ERD Diagram.edmx</DependentUpon>
+    </Content>
+    <Content Include="ERD Diagram.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ERD Diagram.edmx</DependentUpon>
+      <LastGenOutput>ERD Diagram.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

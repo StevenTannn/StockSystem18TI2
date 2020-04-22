@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="Stock.Produk" Collapsed="true">
+    <Position X="4" Y="4" Width="3" />
+    <Members>
+      <Field Name="cmd" Hidden="true" />
+      <Field Name="con" Hidden="true" />
+      <Field Name="dataReader" Hidden="true" />
+      <Field Name="hargaPrd" Hidden="true" />
+      <Field Name="idMerek" Hidden="true" />
+      <Field Name="idProduk" Hidden="true" />
+      <Method Name="Produk" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>BBAAAhENYAAKEBwAACAMAQAQQEAAIhEEAAAIpABBAAA=</HashCode>
+      <FileName>Produk.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="TransStockMasuk" />
+      <Property Name="TransStockKeluar" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Stock.Merek" Collapsed="true">
+    <Position X="4.25" Y="5.25" Width="3" />
+    <Members>
+      <Field Name="cmd" Hidden="true" />
+      <Field Name="con" Hidden="true" />
+      <Field Name="dataReader" Hidden="true" />
+      <Method Name="Merek" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAByAACAIASAAAAAAAAEAAAAIoAABAAA=</HashCode>
+      <FileName>Merek.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Produk" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Stock.TransStockKeluar" Collapsed="true">
+    <Position X="6.25" Y="2.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>kAAACRIBIAAAAQwAAAAAAQAAAAAAApAAAAAAIQAQAAA=</HashCode>
+      <FileName>TransStockKeluar.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Stock.TransStockMasuk" Collapsed="true">
+    <Position X="2.5" Y="2.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>EAAACRIBIAAAAQwAAAAAAQAAAAAAApAAAAACIQAQAAA=</HashCode>
+      <FileName>TransStockMasuk.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Stock.Customer" Collapsed="true">
+    <Position X="7.5" Y="1.5" Width="1.5" />
+    <Members>
+      <Field Name="cmd" Hidden="true" />
+      <Field Name="con" Hidden="true" />
+      <Method Name="Customer" Hidden="true" />
+      <Field Name="dataReader" Hidden="true" />
+    </Members>
+    <AssociationLine Name="TransStockKeluar" Type="Stock.TransStockKeluar">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.09" Y="-1.425" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>gAAACgKAAAgAAAwAACAIAQAQAAAEABEAAAECIABAAAQ=</HashCode>
+      <FileName>Customer.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="TransStockKeluar" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Stock.Supplier" Collapsed="true">
+    <Position X="1.75" Y="1.5" Width="1.5" />
+    <Members>
+      <Field Name="cmd" Hidden="true" />
+      <Field Name="con" Hidden="true" />
+      <Field Name="dataReader" Hidden="true" />
+      <Method Name="Supplier" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAIAKAKAAAgAAAwAACAMAQAQAAAAABEAAAECIAgAAAA=</HashCode>
+      <FileName>Supplier.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="TransStockMasuk" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Stock.Transaction">
+    <Position X="4.5" Y="1" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Transaction.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

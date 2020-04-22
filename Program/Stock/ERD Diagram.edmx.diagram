@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ebc7e3854d1b4f83839d4eccf6915f3c" Name="Diagram1" ZoomLevel="100">
+        <EntityTypeShape EntityType="HandphoneModel.tableCustomer" Width="1.5" PointX="2.75" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HandphoneModel.tableJabatan" Width="1.5" PointX="10.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HandphoneModel.tableKaryawan" Width="1.5" PointX="13" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HandphoneModel.tableMerek" Width="1.5" PointX="5.25" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HandphoneModel.tableProduk" Width="1.5" PointX="6.875" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HandphoneModel.tableStock" Width="1.5" PointX="8.25" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HandphoneModel.tableStockKeluar" Width="1.5" PointX="4.875" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HandphoneModel.tableStockMasuk" Width="1.5" PointX="8.875" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HandphoneModel.tableSupplier" Width="1.5" PointX="10.875" PointY="0.5" IsExpanded="true" />
+        <AssociationConnector Association="HandphoneModel.FK_StockKeluar_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="HandphoneModel.FK_Karyawan_Jabatan" ManuallyRouted="false" />
+        <AssociationConnector Association="HandphoneModel.FK_Produk_Merek" ManuallyRouted="false" >
+        </AssociationConnector>
+        <AssociationConnector Association="HandphoneModel.FK_StockKeluar_Produk" ManuallyRouted="false" />
+        <AssociationConnector Association="HandphoneModel.FK_StockMasuk_Produk" ManuallyRouted="false" />
+        <AssociationConnector Association="HandphoneModel.FK_StockMasuk_Supplier" ManuallyRouted="false" >
+        </AssociationConnector>
+        <AssociationConnector Association="HandphoneModel.tableProduktableStock" ManuallyRouted="false" >
+        </AssociationConnector>
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

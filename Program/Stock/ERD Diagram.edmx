@@ -1,0 +1,533 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="HandphoneModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tableCustomer">
+          <Key>
+            <PropertyRef Name="idCustomer" />
+          </Key>
+          <Property Name="idCustomer" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="namaCustomer" Type="nvarchar" MaxLength="50" />
+          <Property Name="alamat" Type="nvarchar" MaxLength="50" />
+          <Property Name="noTelp" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tableJabatan">
+          <Key>
+            <PropertyRef Name="idJabatan" />
+          </Key>
+          <Property Name="idJabatan" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="namaJabatan" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tableKaryawan">
+          <Key>
+            <PropertyRef Name="idKaryawan" />
+          </Key>
+          <Property Name="idKaryawan" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nama" Type="nvarchar" MaxLength="50" />
+          <Property Name="pass" Type="nvarchar" MaxLength="50" />
+          <Property Name="idJabatan" Type="int" />
+        </EntityType>
+        <EntityType Name="tableMerek">
+          <Key>
+            <PropertyRef Name="idMerek" />
+          </Key>
+          <Property Name="idMerek" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="namaMerek" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tableProduk">
+          <Key>
+            <PropertyRef Name="idProduk" />
+          </Key>
+          <Property Name="idProduk" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idMerek" Type="int" Nullable="false" />
+          <Property Name="namaProduk" Type="nvarchar" MaxLength="50" />
+          <Property Name="RAM" Type="int" />
+          <Property Name="mInternal" Type="nchar" MaxLength="10" />
+          <Property Name="imgPrd" Type="image" />
+          <Property Name="hargaPrd" Type="int" />
+        </EntityType>
+        <EntityType Name="tableStock">
+          <Key>
+            <PropertyRef Name="idProduk" />
+          </Key>
+          <Property Name="idProduk" Type="int" Nullable="false" />
+          <Property Name="prdStock" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tableStockKeluar">
+          <Key>
+            <PropertyRef Name="idTransaksi" />
+          </Key>
+          <Property Name="idTransaksi" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idProduk" Type="int" Nullable="false" />
+          <Property Name="idCustomer" Type="int" />
+          <Property Name="qty" Type="int" />
+          <Property Name="tanggal" Type="nchar" MaxLength="10" />
+          <Property Name="hargaTransaksi" Type="int" />
+        </EntityType>
+        <EntityType Name="tableStockMasuk">
+          <Key>
+            <PropertyRef Name="idTransaksi" />
+          </Key>
+          <Property Name="idTransaksi" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idProduk" Type="int" />
+          <Property Name="idSupplier" Type="int" />
+          <Property Name="qty" Type="int" Nullable="false" />
+          <Property Name="tanggal" Type="nchar" MaxLength="10" />
+          <Property Name="hargaTransaksi" Type="int" />
+        </EntityType>
+        <EntityType Name="tableSupplier">
+          <Key>
+            <PropertyRef Name="idSupplier" />
+          </Key>
+          <Property Name="idSupplier" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="namaSupplier" Type="nvarchar" MaxLength="50" />
+          <Property Name="alamat" Type="nvarchar" MaxLength="50" />
+          <Property Name="noTelp" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Karyawan_Jabatan">
+          <End Role="tableJabatan" Type="Self.tableJabatan" Multiplicity="0..1" />
+          <End Role="tableKaryawan" Type="Self.tableKaryawan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tableJabatan">
+              <PropertyRef Name="idJabatan" />
+            </Principal>
+            <Dependent Role="tableKaryawan">
+              <PropertyRef Name="idJabatan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Produk_Merek">
+          <End Role="tableMerek" Type="Self.tableMerek" Multiplicity="1" />
+          <End Role="tableProduk" Type="Self.tableProduk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tableMerek">
+              <PropertyRef Name="idMerek" />
+            </Principal>
+            <Dependent Role="tableProduk">
+              <PropertyRef Name="idMerek" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StockKeluar_Customer">
+          <End Role="tableCustomer" Type="Self.tableCustomer" Multiplicity="0..1" />
+          <End Role="tableStockKeluar" Type="Self.tableStockKeluar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tableCustomer">
+              <PropertyRef Name="idCustomer" />
+            </Principal>
+            <Dependent Role="tableStockKeluar">
+              <PropertyRef Name="idCustomer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StockKeluar_Produk">
+          <End Role="tableProduk" Type="Self.tableProduk" Multiplicity="1" />
+          <End Role="tableStockKeluar" Type="Self.tableStockKeluar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tableProduk">
+              <PropertyRef Name="idProduk" />
+            </Principal>
+            <Dependent Role="tableStockKeluar">
+              <PropertyRef Name="idProduk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StockMasuk_Produk">
+          <End Role="tableProduk" Type="Self.tableProduk" Multiplicity="0..1" />
+          <End Role="tableStockMasuk" Type="Self.tableStockMasuk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tableProduk">
+              <PropertyRef Name="idProduk" />
+            </Principal>
+            <Dependent Role="tableStockMasuk">
+              <PropertyRef Name="idProduk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StockMasuk_Supplier">
+          <End Role="tableSupplier" Type="Self.tableSupplier" Multiplicity="0..1" />
+          <End Role="tableStockMasuk" Type="Self.tableStockMasuk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tableSupplier">
+              <PropertyRef Name="idSupplier" />
+            </Principal>
+            <Dependent Role="tableStockMasuk">
+              <PropertyRef Name="idSupplier" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HandphoneModelStoreContainer">
+          <EntitySet Name="tableCustomer" EntityType="Self.tableCustomer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tableJabatan" EntityType="Self.tableJabatan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tableKaryawan" EntityType="Self.tableKaryawan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tableMerek" EntityType="Self.tableMerek" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tableProduk" EntityType="Self.tableProduk" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tableStock" EntityType="Self.tableStock" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tableStockKeluar" EntityType="Self.tableStockKeluar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tableStockMasuk" EntityType="Self.tableStockMasuk" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tableSupplier" EntityType="Self.tableSupplier" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Karyawan_Jabatan" Association="Self.FK_Karyawan_Jabatan">
+            <End Role="tableJabatan" EntitySet="tableJabatan" />
+            <End Role="tableKaryawan" EntitySet="tableKaryawan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Produk_Merek" Association="Self.FK_Produk_Merek">
+            <End Role="tableMerek" EntitySet="tableMerek" />
+            <End Role="tableProduk" EntitySet="tableProduk" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StockKeluar_Customer" Association="Self.FK_StockKeluar_Customer">
+            <End Role="tableCustomer" EntitySet="tableCustomer" />
+            <End Role="tableStockKeluar" EntitySet="tableStockKeluar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StockKeluar_Produk" Association="Self.FK_StockKeluar_Produk">
+            <End Role="tableProduk" EntitySet="tableProduk" />
+            <End Role="tableStockKeluar" EntitySet="tableStockKeluar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StockMasuk_Produk" Association="Self.FK_StockMasuk_Produk">
+            <End Role="tableProduk" EntitySet="tableProduk" />
+            <End Role="tableStockMasuk" EntitySet="tableStockMasuk" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StockMasuk_Supplier" Association="Self.FK_StockMasuk_Supplier">
+            <End Role="tableSupplier" EntitySet="tableSupplier" />
+            <End Role="tableStockMasuk" EntitySet="tableStockMasuk" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HandphoneModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tableCustomer">
+          <Key>
+            <PropertyRef Name="idCustomer" />
+          </Key>
+          <Property Name="idCustomer" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="namaCustomer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="alamat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="noTelp" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tableStockKeluars" Relationship="Self.FK_StockKeluar_Customer" FromRole="tableCustomer" ToRole="tableStockKeluar" />
+        </EntityType>
+        <EntityType Name="tableJabatan">
+          <Key>
+            <PropertyRef Name="idJabatan" />
+          </Key>
+          <Property Name="idJabatan" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="namaJabatan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tableKaryawans" Relationship="Self.FK_Karyawan_Jabatan" FromRole="tableJabatan" ToRole="tableKaryawan" />
+        </EntityType>
+        <EntityType Name="tableKaryawan">
+          <Key>
+            <PropertyRef Name="idKaryawan" />
+          </Key>
+          <Property Name="idKaryawan" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nama" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="pass" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="idJabatan" Type="Int32" />
+          <NavigationProperty Name="tableJabatan" Relationship="Self.FK_Karyawan_Jabatan" FromRole="tableKaryawan" ToRole="tableJabatan" />
+        </EntityType>
+        <EntityType Name="tableMerek">
+          <Key>
+            <PropertyRef Name="idMerek" />
+          </Key>
+          <Property Name="idMerek" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="namaMerek" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tableProduks" Relationship="Self.FK_Produk_Merek" FromRole="tableMerek" ToRole="tableProduk" />
+        </EntityType>
+        <EntityType Name="tableProduk">
+          <Key>
+            <PropertyRef Name="idProduk" />
+          </Key>
+          <Property Name="idProduk" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idMerek" Type="Int32" Nullable="false" />
+          <Property Name="namaProduk" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RAM" Type="Int32" />
+          <Property Name="mInternal" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="imgPrd" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="hargaPrd" Type="Int32" />
+          <NavigationProperty Name="tableMerek" Relationship="Self.FK_Produk_Merek" FromRole="tableProduk" ToRole="tableMerek" />
+          <NavigationProperty Name="tableStockKeluars" Relationship="Self.FK_StockKeluar_Produk" FromRole="tableProduk" ToRole="tableStockKeluar" />
+          <NavigationProperty Name="tableStockMasuks" Relationship="Self.FK_StockMasuk_Produk" FromRole="tableProduk" ToRole="tableStockMasuk" />
+          <NavigationProperty Name="tableStocks" Relationship="HandphoneModel.tableProduktableStock" FromRole="tableProduk" ToRole="tableStock" />
+        </EntityType>
+        <EntityType Name="tableStock">
+          <Key>
+            <PropertyRef Name="idProduk" />
+          </Key>
+          <Property Name="idProduk" Type="Int32" Nullable="false" />
+          <Property Name="prdStock" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tableProduk" Relationship="HandphoneModel.tableProduktableStock" FromRole="tableStock" ToRole="tableProduk" />
+        </EntityType>
+        <EntityType Name="tableStockKeluar">
+          <Key>
+            <PropertyRef Name="idTransaksi" />
+          </Key>
+          <Property Name="idTransaksi" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idProduk" Type="Int32" Nullable="false" />
+          <Property Name="idCustomer" Type="Int32" />
+          <Property Name="qty" Type="Int32" />
+          <Property Name="tanggal" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="hargaTransaksi" Type="Int32" />
+          <NavigationProperty Name="tableCustomer" Relationship="Self.FK_StockKeluar_Customer" FromRole="tableStockKeluar" ToRole="tableCustomer" />
+          <NavigationProperty Name="tableProduk" Relationship="Self.FK_StockKeluar_Produk" FromRole="tableStockKeluar" ToRole="tableProduk" />
+        </EntityType>
+        <EntityType Name="tableStockMasuk">
+          <Key>
+            <PropertyRef Name="idTransaksi" />
+          </Key>
+          <Property Name="idTransaksi" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idProduk" Type="Int32" />
+          <Property Name="idSupplier" Type="Int32" />
+          <Property Name="qty" Type="Int32" Nullable="false" />
+          <Property Name="tanggal" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="hargaTransaksi" Type="Int32" />
+          <NavigationProperty Name="tableProduk" Relationship="Self.FK_StockMasuk_Produk" FromRole="tableStockMasuk" ToRole="tableProduk" />
+          <NavigationProperty Name="tableSupplier" Relationship="Self.FK_StockMasuk_Supplier" FromRole="tableStockMasuk" ToRole="tableSupplier" />
+        </EntityType>
+        <EntityType Name="tableSupplier">
+          <Key>
+            <PropertyRef Name="idSupplier" />
+          </Key>
+          <Property Name="idSupplier" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="namaSupplier" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="alamat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="noTelp" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tableStockMasuks" Relationship="Self.FK_StockMasuk_Supplier" FromRole="tableSupplier" ToRole="tableStockMasuk" />
+        </EntityType>
+        <Association Name="FK_StockKeluar_Customer">
+          <End Role="tableCustomer" Type="Self.tableCustomer" Multiplicity="1" />
+          <End Role="tableStockKeluar" Type="Self.tableStockKeluar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tableCustomer">
+              <PropertyRef Name="idCustomer" />
+            </Principal>
+            <Dependent Role="tableStockKeluar">
+              <PropertyRef Name="idCustomer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Karyawan_Jabatan">
+          <End Role="tableJabatan" Type="Self.tableJabatan" Multiplicity="1" />
+          <End Role="tableKaryawan" Type="Self.tableKaryawan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tableJabatan">
+              <PropertyRef Name="idJabatan" />
+            </Principal>
+            <Dependent Role="tableKaryawan">
+              <PropertyRef Name="idJabatan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Produk_Merek">
+          <End Role="tableMerek" Type="Self.tableMerek" Multiplicity="1" />
+          <End Role="tableProduk" Type="Self.tableProduk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tableMerek">
+              <PropertyRef Name="idMerek" />
+            </Principal>
+            <Dependent Role="tableProduk">
+              <PropertyRef Name="idMerek" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StockKeluar_Produk">
+          <End Role="tableProduk" Type="Self.tableProduk" Multiplicity="1" />
+          <End Role="tableStockKeluar" Type="Self.tableStockKeluar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tableProduk">
+              <PropertyRef Name="idProduk" />
+            </Principal>
+            <Dependent Role="tableStockKeluar">
+              <PropertyRef Name="idProduk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StockMasuk_Produk">
+          <End Role="tableProduk" Type="Self.tableProduk" Multiplicity="1" />
+          <End Role="tableStockMasuk" Type="Self.tableStockMasuk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tableProduk">
+              <PropertyRef Name="idProduk" />
+            </Principal>
+            <Dependent Role="tableStockMasuk">
+              <PropertyRef Name="idProduk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StockMasuk_Supplier">
+          <End Role="tableSupplier" Type="Self.tableSupplier" Multiplicity="1" />
+          <End Role="tableStockMasuk" Type="Self.tableStockMasuk" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tableSupplier">
+              <PropertyRef Name="idSupplier" />
+            </Principal>
+            <Dependent Role="tableStockMasuk">
+              <PropertyRef Name="idSupplier" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Database" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tableCustomers" EntityType="Self.tableCustomer" />
+          <EntitySet Name="tableJabatans" EntityType="Self.tableJabatan" />
+          <EntitySet Name="tableKaryawans" EntityType="Self.tableKaryawan" />
+          <EntitySet Name="tableMereks" EntityType="Self.tableMerek" />
+          <EntitySet Name="tableProduks" EntityType="Self.tableProduk" />
+          <EntitySet Name="tableStocks" EntityType="Self.tableStock" />
+          <EntitySet Name="tableStockKeluars" EntityType="Self.tableStockKeluar" />
+          <EntitySet Name="tableStockMasuks" EntityType="Self.tableStockMasuk" />
+          <EntitySet Name="tableSuppliers" EntityType="Self.tableSupplier" />
+          <AssociationSet Name="FK_StockKeluar_Customer" Association="Self.FK_StockKeluar_Customer">
+            <End Role="tableCustomer" EntitySet="tableCustomers" />
+            <End Role="tableStockKeluar" EntitySet="tableStockKeluars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Karyawan_Jabatan" Association="Self.FK_Karyawan_Jabatan">
+            <End Role="tableJabatan" EntitySet="tableJabatans" />
+            <End Role="tableKaryawan" EntitySet="tableKaryawans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Produk_Merek" Association="Self.FK_Produk_Merek">
+            <End Role="tableMerek" EntitySet="tableMereks" />
+            <End Role="tableProduk" EntitySet="tableProduks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StockKeluar_Produk" Association="Self.FK_StockKeluar_Produk">
+            <End Role="tableProduk" EntitySet="tableProduks" />
+            <End Role="tableStockKeluar" EntitySet="tableStockKeluars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StockMasuk_Produk" Association="Self.FK_StockMasuk_Produk">
+            <End Role="tableProduk" EntitySet="tableProduks" />
+            <End Role="tableStockMasuk" EntitySet="tableStockMasuks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StockMasuk_Supplier" Association="Self.FK_StockMasuk_Supplier">
+            <End Role="tableSupplier" EntitySet="tableSuppliers" />
+            <End Role="tableStockMasuk" EntitySet="tableStockMasuks" />
+          </AssociationSet>
+          <AssociationSet Name="tableProduktableStock" Association="HandphoneModel.tableProduktableStock">
+            <End Role="tableProduk" EntitySet="tableProduks" />
+            <End Role="tableStock" EntitySet="tableStocks" />
+          </AssociationSet>
+        </EntityContainer>
+        <Association Name="tableProduktableStock">
+          <End Type="HandphoneModel.tableProduk" Role="tableProduk" Multiplicity="1" />
+          <End Type="HandphoneModel.tableStock" Role="tableStock" Multiplicity="1" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HandphoneModelStoreContainer" CdmEntityContainer="Database">
+          <EntitySetMapping Name="tableCustomers">
+            <EntityTypeMapping TypeName="HandphoneModel.tableCustomer">
+              <MappingFragment StoreEntitySet="tableCustomer">
+                <ScalarProperty Name="idCustomer" ColumnName="idCustomer" />
+                <ScalarProperty Name="namaCustomer" ColumnName="namaCustomer" />
+                <ScalarProperty Name="alamat" ColumnName="alamat" />
+                <ScalarProperty Name="noTelp" ColumnName="noTelp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tableJabatans">
+            <EntityTypeMapping TypeName="HandphoneModel.tableJabatan">
+              <MappingFragment StoreEntitySet="tableJabatan">
+                <ScalarProperty Name="idJabatan" ColumnName="idJabatan" />
+                <ScalarProperty Name="namaJabatan" ColumnName="namaJabatan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tableKaryawans">
+            <EntityTypeMapping TypeName="HandphoneModel.tableKaryawan">
+              <MappingFragment StoreEntitySet="tableKaryawan">
+                <ScalarProperty Name="idKaryawan" ColumnName="idKaryawan" />
+                <ScalarProperty Name="nama" ColumnName="nama" />
+                <ScalarProperty Name="pass" ColumnName="pass" />
+                <ScalarProperty Name="idJabatan" ColumnName="idJabatan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tableMereks">
+            <EntityTypeMapping TypeName="HandphoneModel.tableMerek">
+              <MappingFragment StoreEntitySet="tableMerek">
+                <ScalarProperty Name="idMerek" ColumnName="idMerek" />
+                <ScalarProperty Name="namaMerek" ColumnName="namaMerek" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tableProduks">
+            <EntityTypeMapping TypeName="HandphoneModel.tableProduk">
+              <MappingFragment StoreEntitySet="tableProduk">
+                <ScalarProperty Name="idProduk" ColumnName="idProduk" />
+                <ScalarProperty Name="idMerek" ColumnName="idMerek" />
+                <ScalarProperty Name="namaProduk" ColumnName="namaProduk" />
+                <ScalarProperty Name="RAM" ColumnName="RAM" />
+                <ScalarProperty Name="mInternal" ColumnName="mInternal" />
+                <ScalarProperty Name="imgPrd" ColumnName="imgPrd" />
+                <ScalarProperty Name="hargaPrd" ColumnName="hargaPrd" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tableStocks">
+            <EntityTypeMapping TypeName="HandphoneModel.tableStock">
+              <MappingFragment StoreEntitySet="tableStock">
+                <ScalarProperty Name="idProduk" ColumnName="idProduk" />
+                <ScalarProperty Name="prdStock" ColumnName="prdStock" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tableStockKeluars">
+            <EntityTypeMapping TypeName="HandphoneModel.tableStockKeluar">
+              <MappingFragment StoreEntitySet="tableStockKeluar">
+                <ScalarProperty Name="idTransaksi" ColumnName="idTransaksi" />
+                <ScalarProperty Name="idProduk" ColumnName="idProduk" />
+                <ScalarProperty Name="idCustomer" ColumnName="idCustomer" />
+                <ScalarProperty Name="qty" ColumnName="qty" />
+                <ScalarProperty Name="tanggal" ColumnName="tanggal" />
+                <ScalarProperty Name="hargaTransaksi" ColumnName="hargaTransaksi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tableStockMasuks">
+            <EntityTypeMapping TypeName="HandphoneModel.tableStockMasuk">
+              <MappingFragment StoreEntitySet="tableStockMasuk">
+                <ScalarProperty Name="idTransaksi" ColumnName="idTransaksi" />
+                <ScalarProperty Name="idProduk" ColumnName="idProduk" />
+                <ScalarProperty Name="idSupplier" ColumnName="idSupplier" />
+                <ScalarProperty Name="qty" ColumnName="qty" />
+                <ScalarProperty Name="tanggal" ColumnName="tanggal" />
+                <ScalarProperty Name="hargaTransaksi" ColumnName="hargaTransaksi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tableSuppliers">
+            <EntityTypeMapping TypeName="HandphoneModel.tableSupplier">
+              <MappingFragment StoreEntitySet="tableSupplier">
+                <ScalarProperty Name="idSupplier" ColumnName="idSupplier" />
+                <ScalarProperty Name="namaSupplier" ColumnName="namaSupplier" />
+                <ScalarProperty Name="alamat" ColumnName="alamat" />
+                <ScalarProperty Name="noTelp" ColumnName="noTelp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
