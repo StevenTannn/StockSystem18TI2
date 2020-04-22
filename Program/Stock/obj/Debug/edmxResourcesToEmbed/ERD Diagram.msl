@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="HandphoneModelStoreContainer" CdmEntityContainer="Database">
+    <EntitySetMapping Name="tableCustomers">
+      <EntityTypeMapping TypeName="HandphoneModel.tableCustomer">
+        <MappingFragment StoreEntitySet="tableCustomer">
+          <ScalarProperty Name="idCustomer" ColumnName="idCustomer" />
+          <ScalarProperty Name="namaCustomer" ColumnName="namaCustomer" />
+          <ScalarProperty Name="alamat" ColumnName="alamat" />
+          <ScalarProperty Name="noTelp" ColumnName="noTelp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tableJabatans">
+      <EntityTypeMapping TypeName="HandphoneModel.tableJabatan">
+        <MappingFragment StoreEntitySet="tableJabatan">
+          <ScalarProperty Name="idJabatan" ColumnName="idJabatan" />
+          <ScalarProperty Name="namaJabatan" ColumnName="namaJabatan" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tableKaryawans">
+      <EntityTypeMapping TypeName="HandphoneModel.tableKaryawan">
+        <MappingFragment StoreEntitySet="tableKaryawan">
+          <ScalarProperty Name="idKaryawan" ColumnName="idKaryawan" />
+          <ScalarProperty Name="nama" ColumnName="nama" />
+          <ScalarProperty Name="pass" ColumnName="pass" />
+          <ScalarProperty Name="idJabatan" ColumnName="idJabatan" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tableMereks">
+      <EntityTypeMapping TypeName="HandphoneModel.tableMerek">
+        <MappingFragment StoreEntitySet="tableMerek">
+          <ScalarProperty Name="idMerek" ColumnName="idMerek" />
+          <ScalarProperty Name="namaMerek" ColumnName="namaMerek" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tableProduks">
+      <EntityTypeMapping TypeName="HandphoneModel.tableProduk">
+        <MappingFragment StoreEntitySet="tableProduk">
+          <ScalarProperty Name="idProduk" ColumnName="idProduk" />
+          <ScalarProperty Name="idMerek" ColumnName="idMerek" />
+          <ScalarProperty Name="namaProduk" ColumnName="namaProduk" />
+          <ScalarProperty Name="RAM" ColumnName="RAM" />
+          <ScalarProperty Name="mInternal" ColumnName="mInternal" />
+          <ScalarProperty Name="imgPrd" ColumnName="imgPrd" />
+          <ScalarProperty Name="hargaPrd" ColumnName="hargaPrd" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tableStocks">
+      <EntityTypeMapping TypeName="HandphoneModel.tableStock">
+        <MappingFragment StoreEntitySet="tableStock">
+          <ScalarProperty Name="idProduk" ColumnName="idProduk" />
+          <ScalarProperty Name="prdStock" ColumnName="prdStock" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tableStockKeluars">
+      <EntityTypeMapping TypeName="HandphoneModel.tableStockKeluar">
+        <MappingFragment StoreEntitySet="tableStockKeluar">
+          <ScalarProperty Name="idTransaksi" ColumnName="idTransaksi" />
+          <ScalarProperty Name="idProduk" ColumnName="idProduk" />
+          <ScalarProperty Name="idCustomer" ColumnName="idCustomer" />
+          <ScalarProperty Name="qty" ColumnName="qty" />
+          <ScalarProperty Name="tanggal" ColumnName="tanggal" />
+          <ScalarProperty Name="hargaTransaksi" ColumnName="hargaTransaksi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tableStockMasuks">
+      <EntityTypeMapping TypeName="HandphoneModel.tableStockMasuk">
+        <MappingFragment StoreEntitySet="tableStockMasuk">
+          <ScalarProperty Name="idTransaksi" ColumnName="idTransaksi" />
+          <ScalarProperty Name="idProduk" ColumnName="idProduk" />
+          <ScalarProperty Name="idSupplier" ColumnName="idSupplier" />
+          <ScalarProperty Name="qty" ColumnName="qty" />
+          <ScalarProperty Name="tanggal" ColumnName="tanggal" />
+          <ScalarProperty Name="hargaTransaksi" ColumnName="hargaTransaksi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tableSuppliers">
+      <EntityTypeMapping TypeName="HandphoneModel.tableSupplier">
+        <MappingFragment StoreEntitySet="tableSupplier">
+          <ScalarProperty Name="idSupplier" ColumnName="idSupplier" />
+          <ScalarProperty Name="namaSupplier" ColumnName="namaSupplier" />
+          <ScalarProperty Name="alamat" ColumnName="alamat" />
+          <ScalarProperty Name="noTelp" ColumnName="noTelp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
